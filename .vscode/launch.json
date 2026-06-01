@@ -1,0 +1,46 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Backend: Spring Boot 起動（Maven経由）",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/backend",
+      "mainClass": "com.example.demo.DemoApplication",
+      "projectName": "demo",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Backend: デバッグアタッチ（リモート）",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 5005,
+      "projectName": "demo"
+    },
+    {
+      "type": "chrome",
+      "name": "Frontend: Chrome でデバッグ",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend/src"
+    },
+    {
+      "type": "node",
+      "name": "Frontend: Vite Dev Server",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}/frontend",
+      "console": "integratedTerminal"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack: Backend + Frontend",
+      "configurations": ["Backend: Spring Boot 起動（Maven経由）", "Frontend: Vite Dev Server"],
+      "stopAll": true
+    }
+  ]
+}

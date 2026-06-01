@@ -1,0 +1,26 @@
+{
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.import.maven.enabled": true,
+  "java.project.importOnFirstTimeStartup": "automatic",
+  "java.project.resourceFilters": ["node_modules", ".git"],
+  "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-21.0.11",
+  "maven.executable.path": "${workspaceFolder}/backend/mvnw.cmd",
+  "java.configuration.maven.userSettings": "",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": null,
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.tsdk": "frontend/node_modules/typescript/lib",
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/target": true
+  }
+}

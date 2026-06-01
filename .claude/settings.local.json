@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(mvn:*)",
+      "Bash(where mvn:*)",
+      "Bash(dir \"C:\\\\Program Files\\\\Apache\\\\maven*\")",
+      "Bash(dir \"C:\\\\Program Files\\\\apache-maven*\")",
+      "Bash(dir \"C:\\\\apache-maven*\")",
+      "Bash(dir \"C:\\\\tools\\\\*maven*\")",
+      "Bash(dir:*)"
+    ]
+  }
+}

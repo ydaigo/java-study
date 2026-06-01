@@ -1,0 +1,128 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Backend: ビルド",
+      "type": "shell",
+      "command": "./mvnw.cmd",
+      "args": ["compile"],
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "group": "build",
+      "problemMatcher": ["$javac"]
+    },
+    {
+      "label": "Backend: クリーンビルド",
+      "type": "shell",
+      "command": "./mvnw.cmd",
+      "args": ["clean", "compile"],
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "group": "build",
+      "problemMatcher": ["$javac"]
+    },
+    {
+      "label": "Backend: テスト実行",
+      "type": "shell",
+      "command": "./mvnw.cmd",
+      "args": ["test"],
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "group": "test",
+      "problemMatcher": ["$javac"]
+    },
+    {
+      "label": "Backend: Spring Boot 起動",
+      "type": "shell",
+      "command": "./mvnw.cmd",
+      "args": ["spring-boot:run"],
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*Started.*$"
+        }
+      }
+    },
+    {
+      "label": "Backend: デバッグモードで起動",
+      "type": "shell",
+      "command": "./mvnw.cmd",
+      "args": [
+        "spring-boot:run",
+        "-Dspring-boot.run.jvmArguments=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*Started.*$"
+        }
+      }
+    },
+    {
+      "label": "Frontend: npm install",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install"],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Frontend: 開発サーバー起動",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*VITE.*$",
+          "endsPattern": "^.*ready in.*$"
+        }
+      }
+    },
+    {
+      "label": "Frontend: ビルド",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "build"],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Full Stack: 両方起動",
+      "dependsOn": ["Backend: Spring Boot 起動", "Frontend: 開発サーバー起動"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}
