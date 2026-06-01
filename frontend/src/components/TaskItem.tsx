@@ -2,7 +2,7 @@
  * タスクアイテムコンポーネント
  * 個別のタスクを表示し、完了切り替えと削除の操作を提供する
  */
-import { Task } from '../api/taskApi';
+import type { Task } from "../api/taskApi";
 
 /**
  * TaskItemコンポーネントのプロパティ
@@ -35,7 +35,9 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
 
       {/* タスク情報 */}
       <div className="flex-1 min-w-0">
-        <h3 className={`font-medium ${task.completed ? 'line-through text-gray-400' : 'text-gray-900'}`}>
+        <h3
+          className={`font-medium ${task.completed ? "line-through text-gray-400" : "text-gray-900"}`}
+        >
           {task.title}
         </h3>
         {task.description && (
