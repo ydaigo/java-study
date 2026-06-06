@@ -8,7 +8,16 @@
       "Bash(dir \"C:\\\\Program Files\\\\apache-maven*\")",
       "Bash(dir \"C:\\\\apache-maven*\")",
       "Bash(dir \"C:\\\\tools\\\\*maven*\")",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(gh repo edit:*)",
+      "Bash(npm run build:*)",
+      "Bash(.mvnw.cmd compile -q)",
+      "Bash(./mvnw.cmd compile:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
