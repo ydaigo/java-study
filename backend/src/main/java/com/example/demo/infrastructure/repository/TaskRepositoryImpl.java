@@ -7,10 +7,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
@@ -23,14 +23,13 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    private final RowMapper<Task> taskRowMapper = (rs, rowNum) ->
-            Task.reconstruct(
-                    rs.getLong("id"),
-                    rs.getString("title"),
-                    rs.getString("description"),
-                    rs.getBoolean("completed"),
-                    rs.getTimestamp("created_at").toLocalDateTime()
-            );
+    @NonNull
+    private final RowMapper<Task> taskRowMapper = (rs, rowNum) -> Task.reconstruct(
+            rs.getLong("id"),
+            rs.getString("title"),
+            rs.getString("description"),
+            rs.getBoolean("completed"),
+            rs.getTimestamp("created_at").toLocalDateTime());
 
     public TaskRepositoryImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -50,7 +49,7 @@ public class TaskRepositoryImpl implements TaskRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
+            PreparedStatement ps = connection.prepareStatement(sql, new String[] { "id" });
             ps.setString(1, task.getTitle());
             ps.setString(2, task.getDescription());
             ps.setBoolean(3, task.isCompleted());
@@ -72,8 +71,7 @@ public class TaskRepositoryImpl implements TaskRepository {
                 task.getTitle(),
                 task.getDescription(),
                 task.isCompleted(),
-                task.getId().getValue()
-        );
+                task.getId().getValue());
         return task;
     }
 
