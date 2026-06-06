@@ -6,7 +6,6 @@ import com.example.demo.application.usecase.DeleteTaskUseCase;
 import com.example.demo.application.usecase.GetTaskUseCase;
 import com.example.demo.application.usecase.UpdateTaskUseCase;
 import com.example.demo.domain.exception.ResourceNotFoundException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -29,13 +28,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(TaskController.class)
 @DisplayName("TaskController 統合テスト")
+@SuppressWarnings("null")
 class TaskControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @MockitoBean
     private CreateTaskUseCase createTaskUseCase;
