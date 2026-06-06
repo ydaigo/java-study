@@ -59,6 +59,9 @@ public class TaskRepositoryImpl implements TaskRepository {
         }, keyHolder);
 
         Number generatedId = keyHolder.getKey();
+        if (generatedId == null) {
+            throw new IllegalStateException("Failed to retrieve generated ID for task");
+        }
         task.assignId(generatedId.longValue());
         return task;
     }
